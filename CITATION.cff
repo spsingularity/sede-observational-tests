@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite both the article and this archive."
+type: software
+title: "Structural Entropy Dark Energy against DESI DR2, Pantheon+ and Planck 2018: a zero-extra-parameter test"
+abstract: "Likelihood-analysis code and chains for the zero-extra-parameter observational test of Structural Entropy Dark Energy against DESI DR2, Pantheon+, and Planck 2018 via mochi-class inside cobaya."
+authors:
+  - family-names: Pandev
+    given-names: Stilian
+    orcid: "https://orcid.org/0009-0005-8153-071X"
+    affiliation: "Independent researcher"
+version: 1.0.0
+date-released: 2026-07-23
+license: MIT
+repository-code: "https://github.com/spsingularity/sede-observational-tests"
+keywords:
+  - "dark energy theory"
+  - "cosmological parameters from CMBR"
+  - "baryon acoustic oscillations"
+  - "modified gravity"
+  - "Boltzmann codes"
