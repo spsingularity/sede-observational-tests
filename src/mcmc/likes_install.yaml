@@ -1,0 +1,9 @@
+likelihood:
+  bao.desi_dr2.desi_bao_all:
+  sn.pantheonplus:
+  planck_2018_lowl.TT:
+  planck_2018_highl_plik.TTTEEE_lite:
+  planck_2018_lensing.native:
+  planckpr4lensing:
+theory:
+  classy:

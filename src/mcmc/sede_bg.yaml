@@ -1,0 +1,30 @@
+theory:
+  classy:
+    path: global
+    extra_args:
+      N_ur: 3.046
+      Omega_Lambda: 0
+      Omega_fld: 0
+      Omega_smg: -1
+      gravity_model: stable_params
+      smg_file_name: inputs/fpab_sede_b020_stable.dat
+      parameters_smg: '1.39982e-1'
+      method_gr_smg: 'on'
+      z_gr_smg: 99
+      expansion_model: rho_de
+      expansion_smg: 0.69991
+      expansion_file_name: inputs/fpab_sede_b020_rho.dat
+      output_background_smg: 3
+      skip_stability_tests_smg: 'no'
+      method_qs_smg: fully_dynamic
+      pert_initial_conditions_smg: zero
+output: mcmc/out/sede_bg
+likelihood:
+  bao.desi_dr2.desi_bao_all:
+  sn.pantheonplus:
+params:
+  H0: {prior: {min: 60, max: 80}, ref: 68.0, proposal: 0.4, latex: H_0}
+  omega_b: {prior: {min: 0.019, max: 0.025}, ref: 0.02237, proposal: 0.0001, latex: '\omega_b'}
+  omega_cdm: {prior: {min: 0.10, max: 0.14}, ref: 0.117, proposal: 0.001, latex: '\omega_c'}
+sampler:
+  minimize: {method: scipy, override_scipy: {method: Nelder-Mead, options: {maxfev: 400, xatol: 1.0e-3, fatol: 0.02}}}

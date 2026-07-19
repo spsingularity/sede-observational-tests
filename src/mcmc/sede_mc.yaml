@@ -1,0 +1,88 @@
+theory:
+  classy:
+    path: global
+    extra_args:
+      N_ur: 3.046
+      non_linear: halofit
+      Omega_Lambda: 0
+      Omega_fld: 0
+      Omega_smg: -1
+      gravity_model: stable_params
+      smg_file_name: inputs/fpab_sede_b020_stable.dat
+      parameters_smg: '1.39982e-1'
+      method_gr_smg: 'on'
+      z_gr_smg: 5
+      expansion_model: rho_de
+      expansion_smg: 0.69991
+      expansion_file_name: inputs/fpab_sede_b020_rho.dat
+      output_background_smg: 3
+      skip_stability_tests_smg: 'no'
+      method_qs_smg: fully_dynamic
+      pert_initial_conditions_smg: zero
+output: mcmc/out/sede_mc
+likelihood:
+  bao.desi_dr2.desi_bao_all: null
+  sn.pantheonplus: null
+  planck_2018_lowl.TT: null
+  planck_2018_highl_plik.TTTEEE_lite: null
+  spectral_guard.SpectralGuard:
+    python_path: .   # in-repo spectral_guard.py; run cobaya from src/mcmc/
+prior:
+  tau_prior: 'lambda tau_reio: -0.5*(tau_reio-0.0544)**2/0.0073**2'
+  bbn_prior: 'lambda omega_b: -0.5*(omega_b-0.02218)**2/0.00055**2'
+params:
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 68.0
+    proposal: 0.4
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref: 0.02237
+    proposal: 0.0001
+    latex: \omega_b
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.117
+    proposal: 0.001
+    latex: \omega_c
+  logA:
+    prior:
+      min: 2.9
+      max: 3.2
+    ref: 3.045
+    proposal: 0.01
+    drop: true
+    latex: lnA
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+  n_s:
+    prior:
+      min: 0.94
+      max: 0.99
+    ref: 0.965
+    proposal: 0.002
+    latex: n_s
+  tau_reio:
+    prior:
+      min: 0.02
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.005
+    latex: \tau
+sampler:
+  mcmc:
+    Rminus1_stop: 0.02
+    Rminus1_cl_stop: 0.2
+    learn_proposal: true
+    measure_speeds: true
+    oversample_power: 0.4
+    max_samples: 200000
+    covmat: auto

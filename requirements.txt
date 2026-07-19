@@ -1,0 +1,6 @@
+numpy
+scipy
+matplotlib
+cobaya==3.6.2
+getdist
+Cython

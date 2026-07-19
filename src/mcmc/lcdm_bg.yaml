@@ -1,0 +1,15 @@
+theory:
+  classy:
+    path: global
+    extra_args:
+      N_ur: 3.046
+output: mcmc/out/lcdm_bg
+likelihood:
+  bao.desi_dr2.desi_bao_all:
+  sn.pantheonplus:
+params:
+  H0: {prior: {min: 60, max: 80}, ref: 68.0, proposal: 0.4, latex: H_0}
+  omega_b: {prior: {min: 0.019, max: 0.025}, ref: 0.02237, proposal: 0.0001, latex: '\omega_b'}
+  omega_cdm: {prior: {min: 0.10, max: 0.14}, ref: 0.117, proposal: 0.001, latex: '\omega_c'}
+sampler:
+  minimize: {method: scipy, override_scipy: {method: Nelder-Mead, options: {maxfev: 400, xatol: 1.0e-3, fatol: 0.02}}}

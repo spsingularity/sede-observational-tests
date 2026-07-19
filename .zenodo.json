@@ -1,0 +1,21 @@
+{
+  "title": "Structural Entropy Dark Energy against DESI DR2, Pantheon+ and Planck 2018: a zero-extra-parameter test",
+  "description": "Likelihood-analysis code and chains for the zero-extra-parameter observational test of Structural Entropy Dark Energy against DESI DR2, Pantheon+, and Planck 2018 via mochi-class inside cobaya.",
+  "creators": [
+    {
+      "name": "Pandev, Stilian",
+      "orcid": "0009-0005-8153-071X",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "upload_type": "software",
+  "license": "mit",
+  "access_right": "open",
+  "keywords": [
+    "dark energy theory",
+    "cosmological parameters from CMBR",
+    "baryon acoustic oscillations",
+    "modified gravity",
+    "Boltzmann codes"
+  ]
+}
