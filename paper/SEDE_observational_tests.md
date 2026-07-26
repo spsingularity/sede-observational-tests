@@ -328,6 +328,15 @@ whose P3–P5 are the withdrawn SOC layer).
   ISW or the −3.5, as the primary falsifiable claim.
 - The background and stability inputs are frozen at b = 0.20; the braiding fraction is a free parameter
   of the wider program (forecast measurable at ~5σ by DR3+Euclid), not varied here.
+- **Background-only H(z) cannot arbitrate, and this is structural rather than a data limitation.**
+  Against the model-independent 31-point cosmic-chronometer compilation SEDE fits with
+  Δχ² = +0.04 relative to flat ΛCDM at equal parameter count, and the model's background shape
+  is degenerate with an (Ω_m, H₀)-shifted ΛCDM at the ~0.2% level over z ∈ [0, 2] (an oΛCDM fit
+  to the SEDE curve returns Ω_k,eff = 0.000; script in the cosmology companion,
+  `run_deficit_data.py`). No realistic expansion-history precision changes this — which is a
+  further reason the discriminating claims of this paper are placed in the growth (fσ8), tensor
+  (Ξ₀), and Δ-exponent sectors, where the gate's imprint is physical rather than
+  reparameterizable.
 
 ## 8. Conclusions
 
