@@ -377,6 +377,12 @@ data via `cobaya-install`), giving Δχ² = −3.5 → −2.3 with φφ; the ear
 estimates (`phiphi_As.py`, `phiphi_fullrefit.py`) and all caveats are in
 `src/results/phiphi_test_result.md`.
 
+## Funding and competing interests
+
+This research received no external funding. The author, an independent researcher, declares no
+competing interests. Ethics approval is not applicable: this work is theoretical and involved no
+human participants, no human data or tissue, and no animal subjects.
+
 ## Acknowledgements
 
 AI assistance: the analysis and drafting of this paper were carried out with the assistance of Claude
