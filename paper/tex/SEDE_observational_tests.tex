@@ -1,6 +1,8 @@
-% Minimal pandoc template for JCAP (jcappub.sty on article class).
+% Pandoc template for Physics of the Dark Universe (Elsevier, elsarticle.cls).
+% Retargeted from template_jcap.tex: JCAP requires an arXiv identifier
+% (confirmed by its editorial office, 2026-07-29), which is unavailable to this program.
 % Engine: xelatex (STIX Two Text) so the prose Unicode + math render.
-\documentclass[11pt,a4paper]{article}
+\documentclass[preprint,12pt]{elsarticle}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -10,8 +12,18 @@
   \setmainfont{STIX Two Text}
 \fi
 
-\usepackage{jcappub}   % loads amsmath, amssymb, graphicx, natbib[numbers], hyperref
-\usepackage{orcidlink} % ORCID icon next to the author (hyperref already loaded by jcappub)
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{orcidlink}
+
+\makeatletter
+\let\pandocsurd\surd \renewcommand{\surd}{\ensuremath{\pandocsurd}}
+\makeatother
+
+\hyphenation{zenodo Zenodo}
+
+\providecommand{\eprint}[1]{#1}
+\AtBeginDocument{\renewcommand{\eprint}[1]{\href{https://arxiv.org/abs/#1}{#1}}}
 
 % --- prose Unicode operators -> math (works under xe/pdf latex) ---
 \usepackage{newunicodechar}
@@ -71,19 +83,29 @@
 }
 \makeatother
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\graphicspath{{../}{../figures/}{../../results/}}
+\graphicspath{{../}{../figures/}}
 
-% --- front matter (jcappub macros) ---
+\journal{Physics of the Dark Universe}
+\setlength{\emergencystretch}{6em}
+% long DOIs in 12pt single column would otherwise overrun; let TeX stretch instead
+\sloppy
+
+\begin{document}
+\begin{frontmatter}
+
 \title{Structural Entropy Dark Energy against DESI DR2, Pantheon+ and
 Planck 2018: a zero-extra-parameter test}
-\author{Stilian Pandev\,\orcidlink{0009-0005-8153-071X}}
-\affiliation{Independent researcher}
-\emailAdd{stilianpandev@gmail.com}
-\abstract{We confront Structural Entropy Dark Energy (SEDE) --- a
-structure-gated, H-linear horizon-entropy dark energy realized as a
-cubic kinetic-gravity-braiding theory with braiding fraction b = 0.20
---- with the full DESI DR2 BAO, Pantheon+ SN, and Planck 2018 (lowl TT +
-high-ℓ TTTEEE-lite) likelihoods, computed through the mochi-class
+
+\author[ind]{Stilian Pandev\,\orcidlink{0009-0005-8153-071X}}
+\ead{stilianpandev@gmail.com}
+\address[ind]{Independent researcher}
+
+\begin{abstract}
+We confront Structural Entropy Dark Energy (SEDE) --- a structure-gated,
+H-linear horizon-entropy dark energy realized as a cubic
+kinetic-gravity-braiding theory with braiding fraction b = 0.20 --- with
+the full DESI DR2 BAO, Pantheon+ SN, and Planck 2018 (lowl TT + high-ℓ
+TTTEEE-lite) likelihoods, computed through the mochi-class
 modified-gravity Boltzmann code inside cobaya. SEDE's background w(z) is
 fixed by its reconstruction, so at the level of this comparison it
 carries the \textbf{same free-parameter count as
@@ -131,15 +153,16 @@ tension, and within DESI DR3/Euclid reach --- with a corroborating
 correspondingly more model-dependent). The pipeline is rerunnable from
 the released configurations and a pinned fork of the Boltzmann code (the
 chain products and DIC-reduction script are to be committed with the
-release; see Reproducibility).}
-\keywords{dark energy theory; cosmological parameters from CMBR; baryon
-acoustic oscillations; modified gravity}
+release; see Reproducibility).
+\end{abstract}
 
-% absorb small unbreakable-line overruns instead of margin overflow
-\setlength{\emergencystretch}{3em}
+\begin{keyword}
+dark energy theory \sep cosmological parameters from CMBR \sep baryon acoustic
+oscillations \sep modified gravity
+\end{keyword}
 
-\begin{document}
-\maketitle
+\end{frontmatter}
+
 \section{Introduction}\label{sec-1}
 
 SEDE posits that dark energy is the thermodynamic response of the cosmic
@@ -204,9 +227,9 @@ reproduce it.
 at the b = 0.20 fixed point, a cubic kinetic-gravity-braiding theory
 \citep{Deffayet:2010qz}. The background is supplied to the Boltzmann
 code as tabulated \(\rho _\mathrm{DE}(a)\)
-(\texttt{expansion\_model\ =\ rho\_de}) and the perturbation sector as
+(\texttt{expansion\_\allowbreak model\ =\ rho\_\allowbreak de}) and the perturbation sector as
 the stable-parametrization \citep{Bellini:2014fua} Chebyshev
-coefficients (\texttt{gravity\_model\ =\ stable\_params},
+coefficients (\texttt{gravity\_\allowbreak model\ =\ stable\_\allowbreak params},
 \(\alpha _{\mathrm{B0}} = 0.139982\); the braiding
 \(\alpha _{\mathrm{B}} = b\cdot \Omega _{\mathrm{X}}\) is the standard
 density-tracking ansatz, with b = 0.20 in place of the generic 1.5).
@@ -239,9 +262,9 @@ fix of Section~\ref{sec-3} and the frozen model inputs, is pinned at
 commits \texttt{74d4b05} (solver guard) and \texttt{b365166} (inputs).
 
 \textbf{Data.} DESI DR2 BAO \citep{DESI:2025zgx}
-(\texttt{bao.desi\_dr2.desi\_bao\_all}); Pantheon+ SN
-\citep{Brout:2022vxf} (\texttt{sn.pantheonplus}); Planck 2018 lowl TT
-and high-ℓ \texttt{plik\_lite} TTTEEE \citep{Planck:2019nip} (clipy
+(\texttt{bao.\allowbreak desi\_\allowbreak dr2.\allowbreak desi\_\allowbreak bao\_\allowbreak all}); Pantheon+ SN
+\citep{Brout:2022vxf} (\texttt{sn.\allowbreak pantheonplus}); Planck 2018 lowl TT
+and high-ℓ \texttt{plik\_\allowbreak lite} TTTEEE \citep{Planck:2019nip} (clipy
 implementation, validated against its test point to
 \(4\times 10^{-9}\)). Gaussian priors: \(\tau  = 0.0544\) ± 0.0073; BBN
 \(\omega _{\mathrm{b}} = 0.02218\) ± 0.00055 \citep{Schoneberg:2019wmt}
@@ -266,7 +289,7 @@ path.
 \section{A solver pathology and its fix}\label{sec-3}
 
 With the previously adopted GR-transition setting
-\texttt{z\_gr\_smg\ =\ 99}, the SEDE lensed \(D_\ell ^\mathrm{TT}\) is
+\texttt{z\_\allowbreak gr\_\allowbreak smg\ =\ 99}, the SEDE lensed \(D_\ell ^\mathrm{TT}\) is
 \textasciitilde{}\(1500\times\) too large at the first peak and negative
 at high multipoles (e.g.~\(D_\ell (800) < 0\)) --- physically impossible
 (Fig. 1b), and, if taken at face value, a spurious \(\Delta \chi ^{2}\)
@@ -301,7 +324,7 @@ mechanisms compound:
 \textbf{Fix.} (i) A guard in the solver: if the QS \(mass^{2}\) at the
 switch is non-positive, the scalar starts at x = x′ = 0, continuous with
 the GR-held regime (commit \texttt{74d4b05}). (ii) The transition is
-placed below the tachyonic window: \texttt{z\_gr\_smg\ =\ 5}, where
+placed below the tachyonic window: \texttt{z\_\allowbreak gr\_\allowbreak smg\ =\ 5}, where
 \(\Omega _\mathrm{DE}(z=5) \approx  1\)\% --- no dark-energy physics is
 sacrificed.
 
@@ -338,7 +361,7 @@ excursions. The primary acoustic peaks are unmodified (ratio 0.9999 to
 \(\Lambda \mathrm{CDM}\) at ℓ = 220), as they must be --- recombination
 is in the GR regime (Fig. 1a). The ISW suppression ---
 \(C_\ell ^\mathrm{TT}(2)\) ratio = 0.924 from the released finite-k
-pipeline (\texttt{sede\_fsigma8\_isw\_finitek.py}), 0.9236 from the
+pipeline (\texttt{sede\_\allowbreak fsigma8\_\allowbreak isw\_\allowbreak finitek.\allowbreak py}), 0.9236 from the
 \(z_{\mathrm{gr}}\)-independent stage-2 cross-check, \(i.e. -7.6\)\%
 either way --- agrees with the model's original finite-k computation;
 the prediction is real, the \(z_{\mathrm{gr}} = 99\) spectra were not.
@@ -490,7 +513,7 @@ run, the physical interpretation of the \(-3.5\) is provisional.
 \textbf{Marginalized (production MCMC).} Converged chains for both
 models \((R-1\) means: 0.014 / 0.015; bounds \textless{} 0.11; 13.0k /
 19.6k accepted samples; learned proposal seeded from the Planck
-\texttt{base\_plikHM\_TTTEEE\_lowl\_post\_BAO} covariance; spectral
+\texttt{base\_\allowbreak plikHM\_\allowbreak TTTEEE\_\allowbreak lowl\_\allowbreak post\_\allowbreak BAO} covariance; spectral
 guard active throughout, zero rejections):
 
 \begin{longtable}[]{@{}lll@{}}
@@ -562,7 +585,7 @@ ran it. We refit \emph{both} models over \{\(H_{0}\),
 \(\omega _{\mathrm{b}}\), \(\omega _{\mathrm{cdm}}\),
 \(A_{\mathrm{s}}\), \(n_{\mathrm{s}}\)\} to the full DESI DR2 BAO +
 Pantheon+ + BBN + lowl TT + TTTEEE data --- once without and once with
-\texttt{planck\_2018\_lensing.native} (CMB-marginalized). Without
+\texttt{planck\_\allowbreak 2018\_\allowbreak lensing.\allowbreak native} (CMB-marginalized). Without
 \(\phi \phi\) the joint preference is \(\Delta \chi ^{2} = -3.5\)
 (reproducing the best fit and the DIC); \textbf{with \(\phi \phi\) it is
 \(\Delta \chi ^{2} = -2.3\)}. SEDE fits \(\phi \phi\) \emph{worse} than
@@ -588,8 +611,8 @@ TT information and is not a fully independent datum, and
 consistent with (not a proof of) a well-calibrated ∼9-bandpower
 likelihood. This is the direct evidence behind the ``consistent with
 \(\Lambda \mathrm{CDM}\), mild pull'' reading (repro
-\texttt{phiphi\_joint\_refit.py}; earlier estimates and caveats in
-\texttt{results/phiphi\_test\_result.md}).
+\texttt{phiphi\_\allowbreak joint\_\allowbreak refit.\allowbreak py}; earlier estimates and caveats in
+\texttt{results/\allowbreak phiphi\_\allowbreak test\_\allowbreak result.\allowbreak md}).
 
 \section{Predictions}\label{sec-6}
 
@@ -663,8 +686,8 @@ for \(\Lambda \mathrm{CDM}\) and SEDE at the shared best-fit cosmology.
 the three curves lie on top of one another, which is the point: the
 enhancement is scale-independent through the RSD range, entering the
 DESI DR3/Euclid sensitivity band. Underlying data:
-\texttt{src/fsigma8\_prediction.json}, regenerated by
-\texttt{src/sims/sede\_fsigma8\_isw\_finitek.py}.}\label{fig:3}
+\texttt{src/\allowbreak fsigma8\_\allowbreak prediction.\allowbreak json}, regenerated by
+\texttt{src/\allowbreak sims/\allowbreak sede\_\allowbreak fsigma8\_\allowbreak isw\_\allowbreak finitek.\allowbreak py}.}\label{fig:3}
 \end{figure}
 
 \section{Limitations}\label{sec-7}
@@ -681,7 +704,7 @@ DESI DR3/Euclid sensitivity band. Underlying data:
   \((\phi \phi )\) likelihood --- and it pulls the preference down.} The
   entire preference sits in the high-ℓ TTTEEE term, where Planck's
   \(A_{\mathrm{lens}} > 1\) tendency lives. Adding the direct
-  \(\phi \phi\) likelihood (\texttt{planck\_2018\_lensing.native},
+  \(\phi \phi\) likelihood (\texttt{planck\_\allowbreak 2018\_\allowbreak lensing.\allowbreak native},
   reconstructed amplitude \(\approx  1.0\)) in a full
   BAO/SN/BBN-anchored joint refit erodes the preference from \(-3.5\) to
   \textbf{−2.3} (§\ref{sec-5}): about a third of the TTTEEE gain is
@@ -733,7 +756,7 @@ DESI DR3/Euclid sensitivity band. Underlying data:
   \(\Lambda \mathrm{CDM}\) at the \textasciitilde0.2\% level over
   \(z \in  [0\), 2{]} (an \(o\Lambda \mathrm{CDM}\) fit to the SEDE
   curve returns \(\Omega _{\mathrm{k}}\),eff = 0.000; script in the
-  cosmology companion, \texttt{run\_deficit\_data.py}). No realistic
+  cosmology companion, \texttt{run\_\allowbreak deficit\_\allowbreak data.\allowbreak py}). No realistic
   expansion-history precision changes this --- which is a further reason
   the discriminating claims of this paper are placed in the growth
   \((f\sigma 8)\), tensor \((\Xi _{0})\), and \(\Delta\)-exponent
@@ -787,25 +810,25 @@ reduction script are to be committed with the release, so that the
 headline \(\Delta \mathrm{DIC}\) is auditable and not only rerunnable.
 The Boltzmann engine is the pinned mochi-class fork (\texttt{74d4b05}
 solver guard; \texttt{b365166} frozen FPAB inputs; build:
-\texttt{rm\ python/classy.cpp\ \&\&\ pip\ install\ .\ -\/-no-build-isolation}).
-The fork location is set via \texttt{MOCHI\_DIR}, the frozen SEDE inputs
-are vendored in \texttt{src/mcmc/inputs/}, and likelihood data install
+\texttt{rm\ python/\allowbreak classy.\allowbreak cpp\ \&\&\ pip\ install\ .\allowbreak \ -\/\allowbreak -no-build-isolation}).
+The fork location is set via \texttt{MOCHI\_\allowbreak DIR}, the frozen SEDE inputs
+are vendored in \texttt{src/\allowbreak mcmc/\allowbreak inputs/\allowbreak }, and likelihood data install
 via \texttt{cobaya-install} from the included
-\texttt{likes\_install.yaml} (full setup in \texttt{src/README.md}). The
+\texttt{likes\_\allowbreak install.\allowbreak yaml} (full setup in \texttt{src/\allowbreak README.\allowbreak md}). The
 growth/ISW predictions \((\sigma 8\), \(f\sigma 8\), the
 \(C_\ell ^\mathrm{TT}(2)=0.924\) ISW ratio) regenerate directly from
-\texttt{src/sims/sede\_fsigma8\_isw\_finitek.py}; the production chains
-were run with the exact \texttt{lcdm\_mc.yaml} / \texttt{sede\_mc.yaml}
+\texttt{src/\allowbreak sims/\allowbreak sede\_\allowbreak fsigma8\_\allowbreak isw\_\allowbreak finitek.\allowbreak py}; the production chains
+were run with the exact \texttt{lcdm\_\allowbreak mc.\allowbreak yaml} / \texttt{sede\_\allowbreak mc.\allowbreak yaml}
 released here (Rminus1 stop 0.02; the loose
 \(Rminus1_{\mathrm{cl},\mathrm{stop}}\) 0.2 on the tails should be
 tightened for the released run). The Planck-lensing \((\phi \phi )\)
 test of §\ref{sec-5}: the definitive BAO/SN/BBN-anchored joint refit is
-\texttt{src/mcmc/phiphi\_joint\_refit.py} (needs the full DESI DR2 BAO +
+\texttt{src/\allowbreak mcmc/\allowbreak phiphi\_\allowbreak joint\_\allowbreak refit.\allowbreak py} (needs the full DESI DR2 BAO +
 Pantheon+ + Planck primary + lensing data via \texttt{cobaya-install}),
 giving \(\Delta \chi ^{2} = -3.5\) → −2.3 with \(\phi \phi\); the
 earlier \(A_{\mathrm{s}}\)-profiled and CMB-only estimates
-(\texttt{phiphi\_As.py}, \texttt{phiphi\_fullrefit.py}) and all caveats
-are in \texttt{src/results/phiphi\_test\_result.md}.
+(\texttt{phiphi\_\allowbreak As.\allowbreak py}, \texttt{phiphi\_\allowbreak fullrefit.\allowbreak py}) and all caveats
+are in \texttt{src/\allowbreak results/\allowbreak phiphi\_\allowbreak test\_\allowbreak result.\allowbreak md}.
 
 \section*{Funding and competing
 interests}\label{funding-and-competing-interests}
@@ -822,6 +845,7 @@ no human data or tissue, and no animal subjects.
 AI assistance: the analysis and drafting of this paper were carried out
 with the assistance of Claude (Anthropic). All numerical claims trace to
 the released, rerunnable configurations and scripts.
-\bibliographystyle{JHEP}
+
+\bibliographystyle{elsarticle-num}
 \bibliography{refs}
 \end{document}
