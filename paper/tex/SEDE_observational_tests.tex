@@ -361,8 +361,8 @@ excursions. The primary acoustic peaks are unmodified (ratio 0.9999 to
 \(\Lambda \mathrm{CDM}\) at ℓ = 220), as they must be --- recombination
 is in the GR regime (Fig. 1a). The ISW suppression ---
 \(C_\ell ^\mathrm{TT}(2)\) ratio = 0.924 from the released finite-k
-pipeline (\texttt{sede\_\allowbreak fsigma8\_\allowbreak isw\_\allowbreak finitek.\allowbreak py}), 0.9236 from the
-\(z_{\mathrm{gr}}\)-independent stage-2 cross-check, \(i.e. -7.6\)\%
+pipeline (\texttt{src/\allowbreak sims/\allowbreak sede\_\allowbreak fsigma8\_\allowbreak isw\_\allowbreak finitek.\allowbreak py}), 0.9236 from
+the \(z_{\mathrm{gr}}\)-independent stage-2 cross-check, \(i.e. -7.6\)\%
 either way --- agrees with the model's original finite-k computation;
 the prediction is real, the \(z_{\mathrm{gr}} = 99\) spectra were not.
 
@@ -611,8 +611,8 @@ TT information and is not a fully independent datum, and
 consistent with (not a proof of) a well-calibrated ∼9-bandpower
 likelihood. This is the direct evidence behind the ``consistent with
 \(\Lambda \mathrm{CDM}\), mild pull'' reading (repro
-\texttt{phiphi\_\allowbreak joint\_\allowbreak refit.\allowbreak py}; earlier estimates and caveats in
-\texttt{results/\allowbreak phiphi\_\allowbreak test\_\allowbreak result.\allowbreak md}).
+\texttt{src/\allowbreak mcmc/\allowbreak phiphi\_\allowbreak joint\_\allowbreak refit.\allowbreak py}; earlier estimates and caveats
+in \texttt{src/\allowbreak results/\allowbreak phiphi\_\allowbreak test\_\allowbreak result.\allowbreak md}).
 
 \section{Predictions}\label{sec-6}
 
@@ -814,21 +814,23 @@ solver guard; \texttt{b365166} frozen FPAB inputs; build:
 The fork location is set via \texttt{MOCHI\_\allowbreak DIR}, the frozen SEDE inputs
 are vendored in \texttt{src/\allowbreak mcmc/\allowbreak inputs/\allowbreak }, and likelihood data install
 via \texttt{cobaya-install} from the included
-\texttt{likes\_\allowbreak install.\allowbreak yaml} (full setup in \texttt{src/\allowbreak README.\allowbreak md}). The
-growth/ISW predictions \((\sigma 8\), \(f\sigma 8\), the
-\(C_\ell ^\mathrm{TT}(2)=0.924\) ISW ratio) regenerate directly from
+\texttt{src/\allowbreak mcmc/\allowbreak likes\_\allowbreak install.\allowbreak yaml} (full setup in
+\texttt{src/\allowbreak README.\allowbreak md}). The growth/ISW predictions \((\sigma 8\),
+\(f\sigma 8\), the \(C_\ell ^\mathrm{TT}(2)=0.924\) ISW ratio)
+regenerate directly from
 \texttt{src/\allowbreak sims/\allowbreak sede\_\allowbreak fsigma8\_\allowbreak isw\_\allowbreak finitek.\allowbreak py}; the production chains
-were run with the exact \texttt{lcdm\_\allowbreak mc.\allowbreak yaml} / \texttt{sede\_\allowbreak mc.\allowbreak yaml}
-released here (Rminus1 stop 0.02; the loose
-\(Rminus1_{\mathrm{cl},\mathrm{stop}}\) 0.2 on the tails should be
-tightened for the released run). The Planck-lensing \((\phi \phi )\)
+were run with the exact \texttt{src/\allowbreak mcmc/\allowbreak lcdm\_\allowbreak mc.\allowbreak yaml} /
+\texttt{src/\allowbreak mcmc/\allowbreak sede\_\allowbreak mc.\allowbreak yaml} released here (Rminus1 stop 0.02; the
+loose \(Rminus1_{\mathrm{cl},\mathrm{stop}}\) 0.2 on the tails should
+be tightened for the released run). The Planck-lensing \((\phi \phi )\)
 test of §\ref{sec-5}: the definitive BAO/SN/BBN-anchored joint refit is
 \texttt{src/\allowbreak mcmc/\allowbreak phiphi\_\allowbreak joint\_\allowbreak refit.\allowbreak py} (needs the full DESI DR2 BAO +
 Pantheon+ + Planck primary + lensing data via \texttt{cobaya-install}),
 giving \(\Delta \chi ^{2} = -3.5\) → −2.3 with \(\phi \phi\); the
 earlier \(A_{\mathrm{s}}\)-profiled and CMB-only estimates
-(\texttt{phiphi\_\allowbreak As.\allowbreak py}, \texttt{phiphi\_\allowbreak fullrefit.\allowbreak py}) and all caveats
-are in \texttt{src/\allowbreak results/\allowbreak phiphi\_\allowbreak test\_\allowbreak result.\allowbreak md}.
+(\texttt{src/\allowbreak mcmc/\allowbreak phiphi\_\allowbreak As.\allowbreak py},
+\texttt{src/\allowbreak mcmc/\allowbreak phiphi\_\allowbreak fullrefit.\allowbreak py}) and all caveats are in
+\texttt{src/\allowbreak results/\allowbreak phiphi\_\allowbreak test\_\allowbreak result.\allowbreak md}.
 
 \section*{Funding and competing
 interests}\label{funding-and-competing-interests}
@@ -843,8 +845,9 @@ no human data or tissue, and no animal subjects.
 \addcontentsline{toc}{section}{Acknowledgements}
 
 AI assistance: the analysis and drafting of this paper were carried out
-with the assistance of Claude (Anthropic). All numerical claims trace to
-the released, rerunnable configurations and scripts.
+with the assistance of Claude Opus 4.x (Anthropic). All numerical claims
+trace to the released, rerunnable configurations and scripts. No AI tool
+is an author.
 
 \bibliographystyle{elsarticle-num}
 \bibliography{refs}

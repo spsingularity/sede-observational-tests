@@ -149,7 +149,7 @@ and hence whether the below-window observables inherit any residual contaminatio
 (Ω_m ≈ 0.27–0.42) is sane at every point, as are four hostile corners with A_s/n_s excursions. The
 primary acoustic peaks are unmodified (ratio 0.9999 to ΛCDM at ℓ = 220), as they must be — recombination
 is in the GR regime (Fig. 1a). The ISW suppression — C_ℓ^TT(2) ratio = 0.924 from the released finite-k pipeline
-(`sede_fsigma8_isw_finitek.py`), 0.9236 from the z_gr-independent stage-2 cross-check, i.e. −7.6% either
+(`src/sims/sede_fsigma8_isw_finitek.py`), 0.9236 from the z_gr-independent stage-2 cross-check, i.e. −7.6% either
 way — agrees with the model's original finite-k computation; the prediction is real, the z_gr = 99 spectra
 were not.
 
@@ -260,7 +260,7 @@ honest number: a CMB-primary-only refit that frees ω_cdm gives a smaller penalt
 φφ likelihood is CMB-marginalized, so it shares some Planck TT information and is not a fully independent
 datum, and χ²_φφ(ΛCDM) ≈ 8.8 is consistent with (not a proof of) a well-calibrated ∼9-bandpower
 likelihood. This is the direct evidence behind the "consistent with ΛCDM, mild pull" reading (repro
-`phiphi_joint_refit.py`; earlier estimates and caveats in `results/phiphi_test_result.md`).
+`src/mcmc/phiphi_joint_refit.py`; earlier estimates and caveats in `src/results/phiphi_test_result.md`).
 
 ## 6. Predictions
 
@@ -367,14 +367,14 @@ the chain$\to$($\langle\chi^2\rangle$, p_D, DIC) reduction script are to be comm
 fork (`74d4b05` solver guard; `b365166` frozen FPAB inputs; build: `rm python/classy.cpp && pip install
 . --no-build-isolation`). The fork location is set via `MOCHI_DIR`, the frozen SEDE inputs are vendored in
 `src/mcmc/inputs/`, and likelihood data install via `cobaya-install` from the included
-`likes_install.yaml` (full setup in `src/README.md`). The growth/ISW predictions (σ8, fσ8, the
+`src/mcmc/likes_install.yaml` (full setup in `src/README.md`). The growth/ISW predictions (σ8, fσ8, the
 C_ℓ^TT(2)=0.924 ISW ratio) regenerate directly from `src/sims/sede_fsigma8_isw_finitek.py`; the
-production chains were run with the exact `lcdm_mc.yaml` / `sede_mc.yaml` released here (Rminus1
+production chains were run with the exact `src/mcmc/lcdm_mc.yaml` / `src/mcmc/sede_mc.yaml` released here (Rminus1
 stop 0.02; the loose Rminus1_cl_stop 0.2 on the tails should be tightened for the released run). The
 Planck-lensing (φφ) test of §5: the definitive BAO/SN/BBN-anchored joint refit is
 `src/mcmc/phiphi_joint_refit.py` (needs the full DESI DR2 BAO + Pantheon+ + Planck primary + lensing
 data via `cobaya-install`), giving Δχ² = −3.5 → −2.3 with φφ; the earlier A_s-profiled and CMB-only
-estimates (`phiphi_As.py`, `phiphi_fullrefit.py`) and all caveats are in
+estimates (`src/mcmc/phiphi_As.py`, `src/mcmc/phiphi_fullrefit.py`) and all caveats are in
 `src/results/phiphi_test_result.md`.
 
 ## Funding and competing interests
@@ -385,8 +385,8 @@ human participants, no human data or tissue, and no animal subjects.
 
 ## Acknowledgements
 
-AI assistance: the analysis and drafting of this paper were carried out with the assistance of Claude
-(Anthropic). All numerical claims trace to the released, rerunnable configurations and scripts.
+AI assistance: the analysis and drafting of this paper were carried out with the assistance of Claude Opus 4.x (Anthropic). All numerical claims trace to the released, rerunnable configurations and scripts.
+No AI tool is an author.
 
 
 ## References
