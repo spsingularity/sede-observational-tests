@@ -361,7 +361,7 @@ and firmly non-decisive.
 ## Reproducibility
 
 The configurations, minimizers, the spectral guard, the diagnostic scripts and the chains' SHA-256
-checksums are in the [`sede-observational-tests`](https://github.com/spsingularity/sede-observational-tests) repository (a tagged release is archived at Zenodo, DOI 10.5281/zenodo.21525527); the production chain files, the minima, and
+checksums are in the [`sede-observational-tests`](https://github.com/spsingularity/sede-observational-tests) repository (a tagged release is archived at Zenodo, DOI 10.5281/zenodo.21525526); the production chain files, the minima, and
 the chain$\to$($\langle\chi^2\rangle$, p_D, DIC) reduction script are to be committed with the release, so that the headline
 ΔDIC is auditable and not only rerunnable. The Boltzmann engine is the pinned mochi-class
 fork (`74d4b05` solver guard; `b365166` frozen FPAB inputs; build: `rm python/classy.cpp && pip install
